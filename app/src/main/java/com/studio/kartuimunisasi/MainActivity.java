@@ -2,9 +2,8 @@ package com.studio.kartuimunisasi;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,9 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.studio.kartuimunisasi.presentation.presenters.MainPresenter;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MainPresenter.MainView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,5 +100,33 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void showState(ViewState state) {
+        switch (state) {
+            case IDLE:
+                showProgress(false);
+                break;
+            case LOADING:
+                showProgress(true);
+                break;
+            case ERROR:
+                break;
+            case LOAD_USER:
+                break;
+            case SHOW_USER:
+                break;
+        }
+    }
+
+    @Override
+    public void showProgress(boolean flag) {
+
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(MainActivity.this, "" + message, Toast.LENGTH_LONG).show();
     }
 }
