@@ -5,4 +5,8 @@ package com.studio.kartuimunisasi.utils;
  */
 public class Enums {
 
+    public enum APIRoute {
+        GET_USERS
+
+    }
 }

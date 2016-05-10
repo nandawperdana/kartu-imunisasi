@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi.api;
+package com.studio.kartuimunisasi.application;
 
 import android.app.Application;
 

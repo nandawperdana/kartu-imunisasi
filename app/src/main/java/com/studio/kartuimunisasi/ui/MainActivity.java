@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi;
+package com.studio.kartuimunisasi.ui;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.studio.kartuimunisasi.R;
 import com.studio.kartuimunisasi.presentation.presenters.MainPresenter;
 
 public class MainActivity extends AppCompatActivity
