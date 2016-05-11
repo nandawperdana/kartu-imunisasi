@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi.api.children;
+package com.studio.kartuimunisasi.api.v1.children;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,6 +1,6 @@
-package com.studio.kartuimunisasi.api.children;
+package com.studio.kartuimunisasi.api.v1.children;
 
-import com.studio.kartuimunisasi.api.history.VaccineHistoriesModel;
+import com.studio.kartuimunisasi.api.v1.history.VaccineHistoriesModel;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;

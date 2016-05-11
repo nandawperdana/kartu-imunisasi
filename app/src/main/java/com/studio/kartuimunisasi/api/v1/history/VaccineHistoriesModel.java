@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi.api.history;
+package com.studio.kartuimunisasi.api.v1.history;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

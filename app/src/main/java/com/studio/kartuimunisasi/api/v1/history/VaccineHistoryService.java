@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi.api.history;
+package com.studio.kartuimunisasi.api.v1.history;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

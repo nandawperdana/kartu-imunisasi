@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi.api.attributes;
+package com.studio.kartuimunisasi.api.v1.attributes;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

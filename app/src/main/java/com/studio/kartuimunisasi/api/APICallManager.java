@@ -1,12 +1,12 @@
 package com.studio.kartuimunisasi.api;
 
 import com.studio.kartuimunisasi.BuildConfig;
-import com.studio.kartuimunisasi.api.children.ChildrenModel;
-import com.studio.kartuimunisasi.api.children.ChildrenService;
-import com.studio.kartuimunisasi.api.history.VaccineHistoriesModel;
-import com.studio.kartuimunisasi.api.history.VaccineHistoryService;
-import com.studio.kartuimunisasi.api.user.UserService;
-import com.studio.kartuimunisasi.api.user.UsersModel;
+import com.studio.kartuimunisasi.api.v1.children.ChildrenModel;
+import com.studio.kartuimunisasi.api.v1.children.ChildrenService;
+import com.studio.kartuimunisasi.api.v1.history.VaccineHistoriesModel;
+import com.studio.kartuimunisasi.api.v1.history.VaccineHistoryService;
+import com.studio.kartuimunisasi.api.v1.user.UserService;
+import com.studio.kartuimunisasi.api.v1.user.UsersModel;
 import com.studio.kartuimunisasi.utils.Constants;
 
 import okhttp3.OkHttpClient;
