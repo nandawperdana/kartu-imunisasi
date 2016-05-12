@@ -1,6 +1,6 @@
 package com.studio.kartuimunisasi.api;
 
-import com.studio.kartuimunisasi.utils.Enums;
+import com.studio.kartuimunisasi.utils.commons.Enums;
 
 import java.util.List;
 

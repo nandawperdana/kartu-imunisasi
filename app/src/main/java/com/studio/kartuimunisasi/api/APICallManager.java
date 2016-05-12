@@ -1,13 +1,15 @@
 package com.studio.kartuimunisasi.api;
 
 import com.studio.kartuimunisasi.BuildConfig;
+import com.studio.kartuimunisasi.api.v1.attributes.AttributeService;
+import com.studio.kartuimunisasi.api.v1.attributes.AttributesModel;
 import com.studio.kartuimunisasi.api.v1.children.ChildrenModel;
 import com.studio.kartuimunisasi.api.v1.children.ChildrenService;
 import com.studio.kartuimunisasi.api.v1.history.VaccineHistoriesModel;
 import com.studio.kartuimunisasi.api.v1.history.VaccineHistoryService;
 import com.studio.kartuimunisasi.api.v1.user.UserService;
 import com.studio.kartuimunisasi.api.v1.user.UsersModel;
-import com.studio.kartuimunisasi.utils.Constants;
+import com.studio.kartuimunisasi.utils.commons.Constants;
 
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
@@ -30,6 +32,7 @@ public class APICallManager {
     public UserManager userManager;
     public ChildrenManager childrenManager;
     public HistoryManager historyManager;
+    public AttributeManager attributeManager;
 
     /**
      * singleton class instance
@@ -69,6 +72,7 @@ public class APICallManager {
         this.userManager = new UserManager();
         this.childrenManager = new ChildrenManager();
         this.historyManager = new HistoryManager();
+        this.attributeManager = new AttributeManager();
     }
 
     public static <T> T getService(Class<T> serviceClass) {
@@ -125,6 +129,11 @@ public class APICallManager {
         public Call<UsersModel> uploadImage(RequestBody image) {
             UserService service = getService(UserService.class);
             return service.postUploadImage(getAuthorizationKey(), image);
+        }
+
+        public Call<UsersModel> editUserGCMId(String snsRegistrationId) {
+            UserService userService = getService(UserService.class);
+            return userService.putUsersSNSRegistrationId(getAuthorizationKey(), snsRegistrationId);
         }
     }
 
@@ -186,6 +195,33 @@ public class APICallManager {
                                                 String place, Integer attributeId) {
             VaccineHistoryService service = getService(VaccineHistoryService.class);
             return service.putEdit(getAuthorizationKey(), id, childId, date, place, attributeId);
+        }
+    }
+
+    public class AttributeManager {
+        public Call<AttributesModel> create(String name, String type) {
+            AttributeService service = getService(AttributeService.class);
+            return service.postCreate(getAuthorizationKey(), name, type);
+        }
+
+        public Call<AttributesModel> edit(Integer id, String name, String type) {
+            AttributeService service = getService(AttributeService.class);
+            return service.putEdit(getAuthorizationKey(), id, name, type);
+        }
+
+        public Call<AttributesModel> getAttributes() {
+            AttributeService service = getService(AttributeService.class);
+            return service.getAttributes();
+        }
+
+        public Call<AttributesModel> getAttribute(Integer id) {
+            AttributeService service = getService(AttributeService.class);
+            return service.getAttribute(getAuthorizationKey(), id);
+        }
+
+        public Call<AttributesModel> getAttributes(String type) {
+            AttributeService service = getService(AttributeService.class);
+            return service.getAttributesByType(type);
         }
     }
 }

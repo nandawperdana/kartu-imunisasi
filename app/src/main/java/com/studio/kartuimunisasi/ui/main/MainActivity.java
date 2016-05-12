@@ -1,4 +1,4 @@
-package com.studio.kartuimunisasi.ui;
+package com.studio.kartuimunisasi.ui.main;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

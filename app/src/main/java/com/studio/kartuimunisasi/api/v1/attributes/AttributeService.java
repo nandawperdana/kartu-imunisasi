@@ -64,5 +64,5 @@ public interface AttributeService {
      * @param type
      */
     @GET("/attributes/shows/{type}")
-    void getAttributesByType(@Path("type") String type);
+    Call<AttributesModel> getAttributesByType(@Path("type") String type);
 }

@@ -75,7 +75,7 @@ public interface UserService {
      */
     @GET("/users/{id}")
     Call<UsersModel> getUser(@Header("authorization") String authorization,
-                              @Path("id") Integer Id);
+                             @Path("id") Integer Id);
 
     /**
      * return the list of users (GET)
@@ -109,4 +109,14 @@ public interface UserService {
     @POST("/users/{id}/upload")
     Call<UsersModel> postUploadImage(@Header("authorization") String authorization,
                                      @Part("image") RequestBody image);
+
+    /**
+     * put the update of user's data (PUT)
+     *
+     * @param authorizationKey
+     * @param snsRegistrationId
+     */
+    @FormUrlEncoded
+    @PUT("/users")
+    Call<UsersModel> putUsersSNSRegistrationId(String authorizationKey, String snsRegistrationId);
 }
