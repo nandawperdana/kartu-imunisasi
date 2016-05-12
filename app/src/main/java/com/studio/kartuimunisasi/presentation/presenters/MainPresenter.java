@@ -2,6 +2,7 @@ package com.studio.kartuimunisasi.presentation.presenters;
 
 import com.studio.kartuimunisasi.presentation.base.BasePresenter;
 import com.studio.kartuimunisasi.presentation.base.BaseView;
+import com.studio.kartuimunisasi.ui.main.mvp.MainModel;
 
 /**
  * Created by NwP.
@@ -14,6 +15,8 @@ public interface MainPresenter extends BasePresenter {
         }
 
         void showState(ViewState state);
+
+        MainModel doRetrieveModel();
     }
 
     void presentState(MainView.ViewState state);

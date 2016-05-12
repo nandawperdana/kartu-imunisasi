@@ -16,9 +16,14 @@ import android.widget.Toast;
 
 import com.studio.kartuimunisasi.R;
 import com.studio.kartuimunisasi.presentation.presenters.MainPresenter;
+import com.studio.kartuimunisasi.ui.main.mvp.MainModel;
+import com.studio.kartuimunisasi.ui.main.mvp.MainPresenterImpl;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, MainPresenter.MainView {
+    MainModel mModel;
+    MainPresenter mPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void initLayout() {
+        mModel = new MainModel();
+        mPresenter = new MainPresenterImpl(this);
     }
 
     @Override
@@ -113,12 +123,18 @@ public class MainActivity extends AppCompatActivity
                 showProgress(true);
                 break;
             case ERROR:
+                showError();
                 break;
             case LOAD_USER:
                 break;
             case SHOW_USER:
                 break;
         }
+    }
+
+    @Override
+    public MainModel doRetrieveModel() {
+        return this.mModel;
     }
 
     @Override
@@ -129,5 +145,9 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void showToast(String message) {
         Toast.makeText(MainActivity.this, "" + message, Toast.LENGTH_LONG).show();
+    }
+
+    private void showError() {
+
     }
 }
