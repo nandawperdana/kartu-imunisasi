@@ -2,38 +2,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/transparent"
-    tools:context=".ui.login.fragment.LoginFragment">
+    android:background="@color/white"
+    tools:context=".ui.login.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shape_background_card"
         android:gravity="bottom"
         android:orientation="vertical"
         android:padding="@dimen/padding_16">
 
-        <Button
-            android:id="@+id/button_login_facebook"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_14"
-            android:background="@drawable/shape_button_primary"
-            android:paddingBottom="@dimen/padding_16"
-            android:paddingTop="@dimen/padding_16"
-            android:scaleType="centerInside"
-            android:text="Continue with Facebook"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:visibility="visible" />
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_login_facebook_overlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_14"
+                android:background="@drawable/shape_button_primary"
+                android:paddingBottom="@dimen/padding_16"
+                android:paddingTop="@dimen/padding_16"
+                android:scaleType="centerInside"
+                android:text="Continue with Facebook"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:visibility="visible" />
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/button_login_facebook"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+        </FrameLayout>
 
         <Button
             android:id="@+id/button_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/shape_button_white"
+            android:background="@drawable/shape_button_grey"
             android:paddingBottom="@dimen/padding_16"
             android:paddingTop="@dimen/padding_16"
             android:scaleType="centerInside"

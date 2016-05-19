@@ -93,6 +93,11 @@ public class APICallManager {
             return service.login(email, password);
         }
 
+        public Call<UsersModel> login(String token) {
+            UserService service = getService(UserService.class);
+            return service.login(token);
+        }
+
         public Call<UsersModel> signUp(String email, String password) {
             UserService service = getService(UserService.class);
             return service.signUp(email, password);

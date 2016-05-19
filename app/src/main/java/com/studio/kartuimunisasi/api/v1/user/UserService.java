@@ -42,6 +42,17 @@ public interface UserService {
     login(@Field("email") String email,
           @Field("password") String password);
 
+
+    /**
+     * login user (POST)
+     *
+     * @param token
+     */
+    @FormUrlEncoded
+    @GET("/facebook/{token}")
+    Call<UsersModel>
+    login(@Field("token") String token);
+
     /**
      * put the update of user's data (PUT)
      *

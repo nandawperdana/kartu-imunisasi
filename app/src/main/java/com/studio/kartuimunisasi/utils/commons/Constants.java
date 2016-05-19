@@ -5,8 +5,8 @@ package com.studio.kartuimunisasi.utils.commons;
  */
 public final class Constants {
     public class Paths {
-        public static final String ENDPOINT_RELEASE = "";
-        public static final String ENDPOINT_STAGING = "";
+        public static final String ENDPOINT_RELEASE = "http://192.168.1.64/i-card/public/api/v1";
+        public static final String ENDPOINT_STAGING = "http://192.168.1.64/i-card/public/api/v1";
     }
 
     public class Keys {

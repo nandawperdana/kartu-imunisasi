@@ -53,6 +53,22 @@ public class UserInteractor implements Interactor {
         });
     }
 
+    public void callAPILoginFacebook(String token) {
+        final Enums.APIRoute route = Enums.APIRoute.LOGIN;
+        Call<UsersModel> call = APICallManager.getInstance().userManager.login(token);
+        call.enqueue(new Callback<UsersModel>() {
+            @Override
+            public void onResponse(Call<UsersModel> call, Response<UsersModel> response) {
+                listener.onAPICallSucceed(route, response.body());
+            }
+
+            @Override
+            public void onFailure(Call<UsersModel> call, Throwable t) {
+                listener.onAPICallFailed(route, t);
+            }
+        });
+    }
+
     public void callAPIGetUsers() {
         final Enums.APIRoute route = Enums.APIRoute.USERS_GET;
         Call<UsersModel> call = APICallManager.getInstance().userManager.getUsers();
