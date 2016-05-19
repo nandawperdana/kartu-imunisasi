@@ -118,5 +118,6 @@ public interface UserService {
      */
     @FormUrlEncoded
     @PUT("/users")
-    Call<UsersModel> putUsersSNSRegistrationId(String authorizationKey, String snsRegistrationId);
+    Call<UsersModel> putUsersSNSRegistrationId(@Header("authorization") String authorizationKey,
+                                               @Field("gcm_id") String snsRegistrationId);
 }

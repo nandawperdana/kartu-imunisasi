@@ -10,8 +10,7 @@ public final class Constants {
     }
 
     public class Keys {
-
-        public static final String GCM_SERVER_KEY = "";
+        public static final String GCM_SERVER_KEY = "AIzaSyBdmPu1VfyqsN8EAnMP0tIX7RgYO-42pHU";
     }
 
     public class Code {
