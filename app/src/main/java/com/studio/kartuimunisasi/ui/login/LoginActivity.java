@@ -17,6 +17,7 @@ import com.studio.kartuimunisasi.R;
 import com.studio.kartuimunisasi.presentation.presenters.LoginPresenter;
 import com.studio.kartuimunisasi.ui.login.mvp.LoginModel;
 import com.studio.kartuimunisasi.ui.login.mvp.LoginPresenterImpl;
+import com.studio.kartuimunisasi.ui.main.MainActivity;
 import com.studio.kartuimunisasi.utils.utils.facebook.FacebookKit;
 import com.studio.kartuimunisasi.utils.utils.facebook.FacebookLoginListener;
 
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     @OnClick(R.id.button_login_facebook_overlay)
     public void onClickLoginFb() {
         buttonLoginFb.performClick();
+        mPresenter.presentState(ViewState.LOAD_LOGIN_FACEBOOK);
     }
 
     // End Region
@@ -72,7 +74,6 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     @Override
     protected void onResume() {
         super.onResume();
-
         if (!FacebookSdk.isInitialized()) {
             FacebookSdk.sdkInitialize(LoginActivity.this);
             if (mCallbackManager == null) {
@@ -109,13 +110,16 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
                 doRetrieveModel().getFacebookKit().doFacebookLogin();
                 break;
             case SHOW_LOGIN:
-                mPresenter.presentState(LoginPresenter.LoginView.ViewState.IDLE);
                 showLogin();
+                break;
+            case OPEN_MAIN:
+                openMainActivity();
                 break;
             case ERROR:
                 mPresenter.presentState(ViewState.IDLE);
                 break;
         }
+        mPresenter.presentState(LoginPresenter.LoginView.ViewState.IDLE);
     }
 
     @Override
@@ -138,7 +142,15 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
     // #ShowState method region
     private void showLogin() {
         showToast("Berhasil login facebook");
+        mPresenter.presentState(ViewState.OPEN_MAIN);
     }
+
+    private void openMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+    }
+
     // end region
 
     @Override

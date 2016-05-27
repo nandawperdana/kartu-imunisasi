@@ -12,7 +12,7 @@ public interface LoginPresenter extends BasePresenter {
         enum ViewState {
             IDLE, LOADING,
             LOAD_LOGIN, SHOW_LOGIN,
-            LOAD_LOGIN_FACEBOOK, ERROR
+            LOAD_LOGIN_FACEBOOK, OPEN_MAIN, ERROR
         }
 
         void showState(ViewState state);

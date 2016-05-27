@@ -40,6 +40,9 @@ public class LoginPresenterImpl implements LoginPresenter, APICallListener {
             case SHOW_LOGIN:
                 mView.showState(LoginView.ViewState.SHOW_LOGIN);
                 break;
+            case OPEN_MAIN:
+                mView.showState(LoginView.ViewState.OPEN_MAIN);
+                break;
             case ERROR:
                 mView.showState(LoginView.ViewState.ERROR);
                 break;
