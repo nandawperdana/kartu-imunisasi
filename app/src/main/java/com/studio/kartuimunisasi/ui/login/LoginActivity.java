@@ -3,6 +3,7 @@ package com.studio.kartuimunisasi.ui.login;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.Toast;
@@ -15,9 +16,9 @@ import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.studio.kartuimunisasi.R;
 import com.studio.kartuimunisasi.presentation.presenters.LoginPresenter;
+import com.studio.kartuimunisasi.ui.dashboard.DashboardActivity;
 import com.studio.kartuimunisasi.ui.login.mvp.LoginModel;
 import com.studio.kartuimunisasi.ui.login.mvp.LoginPresenterImpl;
-import com.studio.kartuimunisasi.ui.main.MainActivity;
 import com.studio.kartuimunisasi.utils.utils.facebook.FacebookKit;
 import com.studio.kartuimunisasi.utils.utils.facebook.FacebookLoginListener;
 
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
         super.onCreate(savedInstanceState);
         // Facebook stuffs
         FacebookSdk.sdkInitialize(LoginActivity.this);
+        AppEventsLogger.activateApp(this);
         this.mCallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_login);
 
@@ -111,6 +113,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
                 break;
             case SHOW_LOGIN:
                 showLogin();
+                mPresenter.presentState(LoginPresenter.LoginView.ViewState.IDLE);
                 break;
             case OPEN_MAIN:
                 openMainActivity();
@@ -119,7 +122,6 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
                 mPresenter.presentState(ViewState.IDLE);
                 break;
         }
-        mPresenter.presentState(LoginPresenter.LoginView.ViewState.IDLE);
     }
 
     @Override
@@ -145,10 +147,18 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.L
         mPresenter.presentState(ViewState.OPEN_MAIN);
     }
 
+    public void showLoginDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
+        loginDialogFragment.show(fm, null);
+    }
+
     private void openMainActivity() {
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
         startActivity(intent);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        finish();
     }
 
     // end region

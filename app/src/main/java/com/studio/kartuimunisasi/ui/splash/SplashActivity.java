@@ -122,6 +122,7 @@ public class SplashActivity extends AppCompatActivity implements SplashPresenter
     private void openLogin() {
         Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     private void showSplash() {

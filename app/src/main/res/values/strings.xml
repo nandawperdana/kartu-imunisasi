@@ -9,4 +9,12 @@
     <string name="message.loading">Memuat...</string>
     <string name="backdrop_title">Kartu Imunisasi</string>
     <string name="backdrop_subtitle">Ayo Imunisasi Wajib Sejak Dini</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Log In</string>
+    <string name="action_sign_in_short">Sign in</string>
+
+    <string name="action_sign_up">Sign Up</string>
+
 </resources>

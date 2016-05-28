@@ -1,12 +1,14 @@
 package com.studio.kartuimunisasi.api.v1.user;
 
 import com.studio.kartuimunisasi.api.v1.children.ChildrenModel;
+import com.studio.kartuimunisasi.utils.commons.Constants;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -24,7 +26,7 @@ public interface UserService {
      * @param email
      * @param password
      */
-    @POST("/users/signup")
+    @POST("users/signup")
     Call<UsersModel>
     signUp(@Field("email") String email,
            @Field("password") String password);
@@ -37,7 +39,7 @@ public interface UserService {
      * @param password
      */
     @FormUrlEncoded
-    @POST("/users/authenticate")
+    @POST("users/authenticate")
     Call<UsersModel>
     login(@Field("email") String email,
           @Field("password") String password);
@@ -49,7 +51,8 @@ public interface UserService {
      * @param token
      */
     @FormUrlEncoded
-    @GET("/facebook/{token}")
+    @HTTP(method = "GET", path = Constants.Paths.ENDPOINT_RELEASE + "facebook/{token}", hasBody = true)
+    @GET("facebook/{token}")
     Call<UsersModel>
     login(@Field("token") String token);
 
@@ -67,7 +70,7 @@ public interface UserService {
      * @param tglLahir
      */
     @FormUrlEncoded
-    @PUT("/users/{id}")
+    @PUT("users/{id}")
     Call<UsersModel> putEdit(@Header("authorization") String authorization,
                              @Path("id") Integer Id,
                              @Field("name") String name,
@@ -84,14 +87,14 @@ public interface UserService {
      * @param authorization
      * @param Id
      */
-    @GET("/users/{id}")
+    @GET("users/{id}")
     Call<UsersModel> getUser(@Header("authorization") String authorization,
                              @Path("id") Integer Id);
 
     /**
      * return the list of users (GET)
      */
-    @GET("/users")
+    @GET("users")
     Call<UsersModel> getUsers();
 
     /**
@@ -100,7 +103,7 @@ public interface UserService {
      * @param authorization
      * @param Id
      */
-    @GET("/users/{id}/children")
+    @GET("users/{id}/children")
     Call<ChildrenModel> getChildren(@Header("authorization") String authorization,
                                     @Path("id") Integer Id);
 
@@ -111,13 +114,13 @@ public interface UserService {
      * @param Id
      * @param Id            child
      */
-    @GET("/users/{user_id}/children/{id}")
+    @GET("users/{user_id}/children/{id}")
     Call<ChildrenModel> getChildrenById(@Header("authorization") String authorization,
                                         @Path("user_id") Integer userId,
                                         @Path("id") Integer Id);
 
     @Multipart
-    @POST("/users/{id}/upload")
+    @POST("users/{id}/upload")
     Call<UsersModel> postUploadImage(@Header("authorization") String authorization,
                                      @Part("image") RequestBody image);
 
@@ -128,7 +131,7 @@ public interface UserService {
      * @param snsRegistrationId
      */
     @FormUrlEncoded
-    @PUT("/users")
+    @PUT("users")
     Call<UsersModel> putUsersSNSRegistrationId(@Header("authorization") String authorizationKey,
                                                @Field("gcm_id") String snsRegistrationId);
 }
